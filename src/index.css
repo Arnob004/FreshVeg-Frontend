@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
+body::selection {
+  color: #0feed4;
+  background: #0a5250;
+}
+[data-scroll-container] {
+  overflow: hidden;
+}
+
+.text {
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.1);
+  transition: -webkit-text-stroke-color 0.7s ease;
+}
+
+.text:hover {
+  -webkit-text-stroke-color: purple;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes shake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* #include <ESP8266WiFi.h>
+#include <ESP8266HTTPClient.h>
+
+const char* ssid = "Dlink"; 
+const char* password = "ArnoB@2004";
+const char* apiUrl = "https://deepseek.ai/api-endpoint";  // DeepSeek API URL
+String userInput = "";
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println("Connected to WiFi!");
+}
+
+void loop() {
+  if (Serial.available() > 0) {  
+    userInput = Serial.readStringUntil('\n'); // Serial Monitor থেকে ইনপুট নেবে
+    userInput.trim();  // অপ্রয়োজনীয় স্পেস বা নিউলাইন রিমুভ করবে
+
+    if (userInput.length() > 0) {
+      sendToDeepSeek(userInput);
+    }
+  }
+}
+
+// DeepSeek API-তে প্রশ্ন পাঠানোর ফাংশন
+void sendToDeepSeek(String question) {
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    
+    String fullUrl = String(apiUrl) + "?query=" + question; // API URL-এর সাথে প্রশ্ন যোগ করা
+    http.begin(fullUrl);
+    int httpCode = http.GET();
+    
+    if (httpCode > 0) {
+      String payload = http.getString();
+      Serial.println("DeepSeek Response: " + payload);  // DeepSeek থেকে প্রাপ্ত উত্তর দেখাবে
+    } else {
+      Serial.println("Request Failed!");
+    }
+    http.end();
+  }
+} */
