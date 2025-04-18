@@ -61,7 +61,7 @@ const Profile = () => {
     if (photoPath?.startsWith('http')) return photoPath;
 
     // Otherwise construct the full URL (adjust this based on your server setup)
-    return `${BACKEND_URL}/uploads/${photoPath}`;
+    return `https://freshveg-backend.onrender.com/uploads/${photoPath}`;
   };
 
   const handleLogout = async () => {
@@ -83,7 +83,7 @@ const Profile = () => {
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
           <div ref={zoomRef} className="relative max-w-[90vw] max-h-[90vh]">
             <img
-              src={`${BACKEND_URL}/uploads/${user.photo}`}
+              src={`https://freshveg-backend.onrender.com/uploads/${user.photo}`}
               className="w-full h-full object-contain rounded-md"
               alt={user.name}
             />
