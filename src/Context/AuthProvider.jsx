@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
-    const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;  
+    
     const [user, setUser] = useState(null);
     const [isLogin, setIsLogin] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post(`${BACKEND_URL}/logout`, {}, { withCredentials: true });
+            await axios.post(`https://freshveg-backend.onrender.com/logout`, {}, { withCredentials: true });
             localStorage.removeItem("user");
             setUser(null);
             setIsLogin(false);
