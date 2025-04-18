@@ -15,7 +15,7 @@ const ForgetPassword = () => {
     const handleSendEmail = async () => {
         if (!email.trim()) return toast.error("ইমেইল দিন!");
         try {
-            await axios.post(`${BACKEND_URL}/forgot-password`, { email });
+            await axios.post(`https://freshveg-backend.onrender.com/forgot-password`, { email });
             toast.success("OTP পাঠানো হয়েছে!");
             setStep(2);
         } catch (err) {
@@ -29,7 +29,7 @@ const ForgetPassword = () => {
 
         try {
             console.log("Verifying OTP:", code);  // Debug log here to verify value
-            await axios.post(`${BACKEND_URL}/verify-otp`, { email, otp: code });
+            await axios.post(`https://freshveg-backend.onrender.com/verify-otp`, { email, otp: code });
             toast.success("OTP সঠিক!");
             setStep(3);
         } catch (err) {
@@ -43,7 +43,7 @@ const ForgetPassword = () => {
             return toast.error("পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে!");
 
         try {
-            await axios.post(`${BACKEND_URL}/reset-password`, {
+            await axios.post(`https://freshveg-backend.onrender.com/reset-password`, {
                 email,
                 otp: otp.join(""),
                 newPassword,
