@@ -10,7 +10,7 @@ const Navbar = () => {
   const { darkMode } = useTheme();
   const { user, isLogin } = useContext(AuthContext); // ✅ UNCOMMENT THIS
   
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -68,7 +68,7 @@ const Navbar = () => {
                     <div className="absolute top-5 hidden right-0 w-3 h-3 bg-red-500 rounded-full border border-white"></div>
                     <img
                       className="w-7 h-7 rounded-full object-cover border border-green-400"
-                      src={`${BACKEND_URL}/uploads/${user.photo}`}
+                      src={`https://freshveg-backend.onrender.com/uploads/${user.photo}`}
                       alt={user.name || "User profile"}
                     />
                   </div>
