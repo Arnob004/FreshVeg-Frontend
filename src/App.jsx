@@ -90,7 +90,7 @@ function App() {
 
   if (error) {
     return (
-      <div className="w-full h-screen flex items-center justify-center text-red-500">
+      <div className="w-full h-screen flex items-center justify-center text-green-500">
         {error}
       </div>
     );
