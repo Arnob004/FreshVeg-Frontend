@@ -9,9 +9,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [showpassword, setshowpassword] = useState(null)
-  const { setUser, setIsLogin } = useAuth(); // Login.jsx এ
-  
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  const { setUser, setIsLogin } = useAuth(); // Login.jsx এ  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,12 +46,12 @@ const Login = () => {
       setIsLoading(true);
       // Step 1: Login request
       const res = await axios.post(
-        `${BACKEND_URL}/login`,
+        `https://freshveg-backend.onrender.com/login`,
         { email, password },
         { withCredentials: true }
       );
       // Step 2: Get current user
-      const userRes = await axios.get(`${BACKEND_URL}/user/me`, {
+      const userRes = await axios.get(`https://freshveg-backend.onrender.com/user/me`, {
         withCredentials: true,
       });
       setUser(userRes.data.user);
@@ -100,7 +98,7 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(`${BACKEND_URL}/signup`, data, {
+      const res = await axios.post(`https://freshveg-backend.onrender.com/signup`, data, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true
       });
