@@ -4,14 +4,14 @@ import { toast, Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth'
 import { Eye, EyeClosed, Home } from "lucide-react";
-
 const Login = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [showpassword, setshowpassword] = useState(null)
   const { setUser, setIsLogin } = useAuth(); // Login.jsx এ
-
+  
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,12 +48,12 @@ const Login = () => {
       setIsLoading(true);
       // Step 1: Login request
       const res = await axios.post(
-        "http://localhost:5040/login",
+        `${BACKEND_URL}/login`,
         { email, password },
         { withCredentials: true }
       );
       // Step 2: Get current user
-      const userRes = await axios.get("http://localhost:5040/user/me", {
+      const userRes = await axios.get(`${BACKEND_URL}/user/me`, {
         withCredentials: true,
       });
       setUser(userRes.data.user);
@@ -100,7 +100,7 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post("http://localhost:5040/signup", data, {
+      const res = await axios.post(`${BACKEND_URL}/signup`, data, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true
       });

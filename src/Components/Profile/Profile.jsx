@@ -18,13 +18,13 @@ import { useTheme } from "../../Context/ThemeProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../Context/AuthProvider";
-
 const Profile = () => {
   const { user, logout } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [logoutLoading, setLogoutLoading] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const { darkMode, toggleTheme } = useTheme();
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const navigate = useNavigate();
   const zoomRef = useRef(null);
 
@@ -61,7 +61,7 @@ const Profile = () => {
     if (photoPath?.startsWith('http')) return photoPath;
 
     // Otherwise construct the full URL (adjust this based on your server setup)
-    return `${'http://localhost:5040'}/uploads/${photoPath}`;
+    return `${BACKEND_URL}/uploads/${photoPath}`;
   };
 
   const handleLogout = async () => {
@@ -83,7 +83,7 @@ const Profile = () => {
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
           <div ref={zoomRef} className="relative max-w-[90vw] max-h-[90vh]">
             <img
-              src={`http://localhost:5040/uploads/${user.photo}`}
+              src={`${BACKEND_URL}/uploads/${user.photo}`}
               className="w-full h-full object-contain rounded-md"
               alt={user.name}
             />

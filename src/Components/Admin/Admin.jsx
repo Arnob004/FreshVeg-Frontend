@@ -8,11 +8,11 @@ const Admin = () => {
   const [notifications, setNotifications] = useState([]);
   const [isShaking, setIsShaking] = useState(false);
   const [activeTab, setActiveTab] = useState("Dashboard");
-
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5040/user/me", {
+        const res = await axios.get(`${BACKEND_URL}/user/me`, {
           withCredentials: true,
         });
         setUser(res.data.user);
@@ -152,7 +152,7 @@ const Admin = () => {
             {user && (
               <img
                 className="h-10 w-10 rounded-full border shadow"
-                src={`http://localhost:5040/uploads/${user.photo}`}
+                src={`${BACKEND_URL}/uploads/${user.photo}`}
                 alt="user"
               />
             )}

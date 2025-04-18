@@ -20,13 +20,13 @@ function App() {
   const [error, setError] = useState(null);
   const scrollRef = useRef(null);
   const locomotiveScrollRef = useRef(null);
-
+  const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;  
   tailChase.register();
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get("http://localhost:5040/product");
+        const response = await axios.get(`${BACKEND_URL}/product`);
         // Ensure response data is valid and an array
         if (response.data && Array.isArray(response.data)) {
           setProducts(response.data);
