@@ -12,7 +12,7 @@ const Admin = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get(`${BACKEND_URL}/user/me`, {
+        const res = await axios.get(`https://freshveg-backend.onrender.com/user/me`, {
           withCredentials: true,
         });
         setUser(res.data.user);
@@ -152,7 +152,7 @@ const Admin = () => {
             {user && (
               <img
                 className="h-10 w-10 rounded-full border shadow"
-                src={`${BACKEND_URL}/uploads/${user.photo}`}
+                src={`https://freshveg-backend.onrender.com/uploads/${user.photo}`}
                 alt="user"
               />
             )}
