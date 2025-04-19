@@ -152,7 +152,7 @@ const Admin = () => {
             {user && (
               <img
                 className="h-10 w-10 rounded-full border shadow"
-                src={`https://freshveg-backend.onrender.com/uploads/${user.photo}`}
+                src={`http://freshveg-backend.onrender.com/uploads/${user.photo}`}
                 alt="user"
               />
             )}
