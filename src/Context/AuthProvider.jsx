@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post(`https://freshveg-backend.onrender.com/logout`, {}, { withCredentials: true });
+            await axios.post(`http://freshveg-backend.onrender.com/logout`, {}, { withCredentials: true });
             localStorage.removeItem("user");
             setUser(null);
             setIsLogin(false);
