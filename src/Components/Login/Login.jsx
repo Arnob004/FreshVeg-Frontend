@@ -46,12 +46,12 @@ const Login = () => {
       setIsLoading(true);
       // Step 1: Login request
       const res = await axios.post(
-        `https://freshveg-backend.onrender.com/login`,
+        `http://freshveg-backend.onrender.com/login`,
         { email, password },
         { withCredentials: true }
       );
       // Step 2: Get current user
-      const userRes = await axios.get(`https://freshveg-backend.onrender.com/user/me`, {
+      const userRes = await axios.get(`http://freshveg-backend.onrender.com/user/me`, {
         withCredentials: true,
       });
       setUser(userRes.data.user);
@@ -98,7 +98,7 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(`https://freshveg-backend.onrender.com/signup`, data, {
+      const res = await axios.post(`http://freshveg-backend.onrender.com/signup`, data, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true
       });
