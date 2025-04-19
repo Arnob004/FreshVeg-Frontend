@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get(`https://freshveg-backend.onrender.com/product`);
+        const response = await axios.get(`http://freshveg-backend.onrender.com/product`);
         // Ensure response data is valid and an array
         if (response.data && Array.isArray(response.data)) {
           setProducts(response.data);
