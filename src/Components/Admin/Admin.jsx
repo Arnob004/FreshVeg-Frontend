@@ -12,7 +12,7 @@ const Admin = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get(`https://freshveg-backend.onrender.com/user/me`, {
+        const res = await axios.get(`http://freshveg-backend.onrender.com/user/me`, {
           withCredentials: true,
         });
         setUser(res.data.user);
